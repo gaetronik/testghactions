@@ -22,7 +22,7 @@ jobs:
           sudo ls
       - name: Start coredns
         run: |
-          ./coredns -conf conf/coredns.conf &
+          sudo ./coredns -conf conf/coredns.conf &
       - name: Test resolver
         run: |
           dig @127.0.0.54 -t soa example.org
