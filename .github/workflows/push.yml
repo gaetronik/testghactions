@@ -18,6 +18,8 @@ jobs:
       - name: Get resolv.conf
         run: |
           cat /etc/resolv.conf
+          id
+          sudo ls
       - name: Start coredns
         run: |
           ./coredns -conf conf/coredns.conf &
