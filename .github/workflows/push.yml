@@ -18,3 +18,9 @@ jobs:
       - name: Get resolv.conf
         run: |
           cat /etc/resolv.conf
+      - name: Start coredns
+        run: |
+          ./coredns -config conf/coredns.conf &
+      - name: Test resolver
+        run: |
+          dig @127.0.0.54 -t soa example.org
