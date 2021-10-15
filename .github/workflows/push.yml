@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  testdns:
+    name: test coredns
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install coredns
+        run: |
+          wget https://github.com/coredns/coredns/releases/download/v1.8.6/coredns_1.8.6_linux_amd64.tgz
+          tar xzf coredns_1.8.6_linux_amd64.tgz
+      - name: Get resolv.conf
+        run: |
+          cat /etc/resolv.conf
