@@ -23,6 +23,8 @@ jobs:
       - name: Start coredns
         run: |
           sudo ./coredns -conf conf/coredns.conf &
+          sudo systemctl stop systemd-resolved
+          echo "nameserver 127.0.0.54" | sudo tee /etc/resolv.conf
       - name: Test resolver
         run: |
-          dig @127.0.0.54 -t soa example.org
+          dig -t soa example.org
